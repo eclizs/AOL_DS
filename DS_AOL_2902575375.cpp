@@ -1,7 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+#ifdef _WIN32
 #include<windows.h>
+#else
+#include<unistd.h>
+#endif
+
 #include "trie.h"
 
 void printMenu();
@@ -37,7 +43,7 @@ void printMenu()
 		{
 			printf("\nInput must be an Integer!\n");
 			getchar();
-			Sleep(500);
+			sleep(0.5);
 			break;
 		}
 		
@@ -57,11 +63,12 @@ void printMenu()
 				break;
 			case 5:
 				printf("Thank you... Have a nice day :)\n");
-				Sleep(1500);
+				sleep(1.5);
 				return;
 			default:
 				break;
 		}
+		input = 0; //reset input to prevent infinite loop when user enters non-integer value
 	} while(input != 5);
 }
 
@@ -110,7 +117,7 @@ void releaseWord()
 		fgets(desc, sizeof(desc), stdin);
 		desc[strlen(desc) - 1] = '\0';
 		printf("wordCount: %d\n", countWords(desc));
-		Sleep(1000);
+		sleep(1);
 	} while(countWords(desc) <= 2);
 
 	if(!insertTrieNode(&root, input, desc))
@@ -120,7 +127,7 @@ void releaseWord()
 		return;
 	}
 	printTrieNode(root);
-	Sleep(1500);
+	sleep(1.5);
 }
 
 

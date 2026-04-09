@@ -194,26 +194,26 @@ bool deleteStr(TrieNode **root, char *signedText)
 	return result;
 }
 
-int main()
-{
-	TrieNode *root = NULL;
+// int main()
+// {
+// 	TrieNode *root = NULL;
 	
-	// insertTrieNode(&root, "KIT", "dwasdw");
-	// insertTrieNode(&root, "KIND", "dwasdw");
-	// insertTrieNode(&root, "KIN", "dwasdw");
-	// insertTrieNode(&root, "KANKER", "dwasdw");
-	// insertTrieNode(&root, "KLANKER", "dwasdw");
-	// insertTrieNode(&root, "KORN", "dwasdw");
-	// printTrieNode(root);
+// 	// insertTrieNode(&root, "KIT", "dwasdw");
+// 	// insertTrieNode(&root, "KIND", "dwasdw");
+// 	// insertTrieNode(&root, "KIN", "dwasdw");
+// 	// insertTrieNode(&root, "KANKER", "dwasdw");
+// 	// insertTrieNode(&root, "KLANKER", "dwasdw");
+// 	// insertTrieNode(&root, "KORN", "dwasdw");
+// 	// printTrieNode(root);
 	
-	// printf("search for JASON: %d\n", searchTrieNode(root, "JASON"));
-	// printf("search for JACKSON: %d\n", searchTrieNode(root, "JACKSON"));
-	// printf("search for JACSON: %d\n", searchTrieNode(root, "JACSON"));
+// 	// printf("search for JASON: %d\n", searchTrieNode(root, "JASON"));
+// 	// printf("search for JACKSON: %d\n", searchTrieNode(root, "JACKSON"));
+// 	// printf("search for JACSON: %d\n", searchTrieNode(root, "JACSON"));
 	
-	// deleteStr(&root, "KIN");
-	// deleteStr(&root, "CA");
+// 	// deleteStr(&root, "KIN");
+// 	// deleteStr(&root, "CA");
 	
-	// printPrefix(root, "K");
+// 	// printPrefix(root, "K");
 
-	return 0;
-}
+// 	return 0;
+// }
