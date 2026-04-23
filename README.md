@@ -10,15 +10,9 @@ Boogle is a company that create, and document new slang words based on the inter
 5.	Exit\n
 
 •	If user choose menu 1 (“Release a new slang word”), then the program will:
-o	Ask the user to input the new slang word. Validate that the slang word must be more than 1 character and contains no space.
-o	Ask the user to input the description (meaning) of the new word. Validate that the description must be more than 1 word.
-o	Store the new released slang word to a Trie data structure along with its description.
-
-
-
-
-
-
+-	Ask the user to input the new slang word. Validate that the slang word must be more than 1 character and contains no space.
+-	Ask the user to input the description (meaning) of the new word. Validate that the description must be more than 1 word.
+-	Store the new released slang word to a Trie data structure along with its description.
 
 Input a new slang word [Must be more than 1 characters and contains no space]: d
 Input a new slang word [Must be more than 1 characters and contains no space]: d a
