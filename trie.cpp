@@ -4,8 +4,6 @@
 #include<string.h>
 #include "trie.h"
 
-//TODO--IMPLEMENT UPDATING DESCRIPTIONS, PRINT WORD ALONG WITH DESCRIPTION WHEN SEARCHED
-
 TrieNode *createTrieNode()
 {
 	TrieNode *newNode = (TrieNode*)calloc(1,sizeof(TrieNode));
@@ -40,20 +38,24 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 	return temp->terminal;
 }
 
-void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length)
+void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *number)
 {
 	unsigned char newPrefix[length+2]; //1 for new char, 1 for null terminator
 	memcpy(newPrefix, prefix, length);
 	newPrefix[length + 1] = '\0';
 	
-	if(node->terminal) printf("WORD: %s\n", prefix);
+	if(node->terminal)
+	{
+		printf("%d. %s\n", *number, newPrefix);
+		*number += 1;
+	}
 	
 	for(int i = 0; i < NUM_CHAR; i++)
 	{
 		if(node->children[i] != NULL)
 		{
 			newPrefix[length] = i;
-			printTrieNode_rec(node->children[i],newPrefix, length+1);
+			printTrieNode_rec(node->children[i],newPrefix, length+1, number);
 		}
 	}
 }
@@ -62,11 +64,12 @@ void printTrieNode(TrieNode *root) //wrapper function
 {
 	if(root == NULL)
 	{
-		printf("No Data\n");
+		printf("There is no slang word yet in the dictionary.\nPress enter to continue...\n");
+		getchar();
 		return;
 	}
-	
-	printTrieNode_rec(root, NULL, 0);
+	int number = 1;
+	printTrieNode_rec(root, NULL, 0, &number);
 }
 
 void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *number)
@@ -125,20 +128,28 @@ void printPrefix(TrieNode *root, char *signedPrefix)
 	printPrefix_rec(prefixNode, buffer, strlen((char*)prefix), &number);
 }
 
-bool searchTrieNode(TrieNode *root, char *signedText)
+SlangWord searchTrieNode(TrieNode *root, char *signedText)
 {
+	if(root == NULL) return (SlangWord){NULL, NULL};
+	SlangWord result = {NULL, NULL};
 	unsigned char *text = (unsigned char*) signedText;
 	int length = strlen(signedText);
 	TrieNode *temp = root;
 	
 	for(int i = 0; i < length; i++)
 	{
-		if(temp->children[text[i]] == NULL) return false;
+		if(temp->children[text[i]] == NULL) return result;
 		
 		temp = temp->children[text[i]];
 	}
 	
-	return temp->terminal;
+	if(temp->terminal)
+	{
+		result.word = strdup(signedText);
+		result.description = strdup(temp->description);
+	}
+	
+	return result;
 }
 
 bool node_has_children(TrieNode *node)

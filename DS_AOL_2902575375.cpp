@@ -3,12 +3,18 @@
 #include<string.h>
 
 #ifdef _WIN32
-#include<windows.h>
+	#include<windows.h>
+	#define SLEEP(x) Sleep(x * 1000)
+	#define CLEAR_SCREEN() system("cls")
 #else
-#include<unistd.h>
+	#include<unistd.h>
+	#define SLEEP(x) usleep(x * 1000000)
+	#define CLEAR_SCREEN() system("clear")
 #endif
 
 #include "trie.h"
+
+//TODO--idk tbh
 
 void printMenu();
 void releaseWord();
@@ -31,7 +37,7 @@ void printMenu()
 {
 	int input;
 	do{
-		system("cls");
+		CLEAR_SCREEN();
 		printf("1.	Release a new slang word\n"); 
 		printf("2.	Search a slang word\n");
 		printf("3.	View all slang words starting with a certain prefix word\n");
@@ -41,11 +47,12 @@ void printMenu()
 		
 		while(scanf("%d", &input) != 1)
 		{
-			printf("\nInput must be an Integer!\n");
-			getchar();
-			sleep(0.5);
+			CLEAR_SCREEN();
+			printf("Input must be an Integer!\n");
+			SLEEP(0.5);
 			break;
 		}
+		getchar(); //consume the newline character left by scanf
 		
 		switch(input)
 		{
@@ -53,17 +60,17 @@ void printMenu()
 				releaseWord();
 				break;
 			case 2:
-//				searchWord();
+				searchWord();
 				break;
 			case 3:
 //				viewSlangWithPrefix();
 				break;
 			case 4:
-//				viewSlang();
+				viewSlang();
 				break;
 			case 5:
 				printf("Thank you... Have a nice day :)\n");
-				sleep(1.5);
+				SLEEP(1.5);
 				return;
 			default:
 				break;
@@ -115,19 +122,73 @@ void releaseWord()
 	do{
 		printf("Input a new slang word description [Must be more than 2 words]:  ");
 		fgets(desc, sizeof(desc), stdin);
-		desc[strlen(desc) - 1] = '\0';
-		printf("wordCount: %d\n", countWords(desc));
-		sleep(1);
+		desc[strlen(desc) - 1] = '\0'; //remove newline character from the end of the string
 	} while(countWords(desc) <= 2);
 
-	if(!insertTrieNode(&root, input, desc))
+	// if(!insertTrieNode(&root, input, desc))
+	// {
+	// 	printf("Failed to create a new slang!\nPress enter to continue...");
+	// 	getchar();
+	// 	return;
+	// }
+	if(searchTrieNode(root, input).word != NULL)
 	{
-		printf("Failed to create a new slang!\nPress enter to continue...");
+		printf("Slang word \"%s\"'s description has been updated!\nPress enter to continue...\n", input);
+		getchar();
+	}
+	else
+	{
+		printf("Slang word \"%s\" has been added to the dictionary!\nPress enter to continue...\n", input);
+		getchar();
+	}
+	insertTrieNode(&root, input, desc);
+}
+
+void searchWord()
+{
+	char input[1000];
+
+	if(root == NULL)
+	{
+		printf("There is no slang word in the dictionary.\nPress enter to continue...");
 		getchar();
 		return;
 	}
+
+	do{
+		printf("Input a slang word to search [Must be more than 1 characters and contains no space]: ");
+		scanf(" %[^\n]", input);
+		getchar();
+	} while(strlen(input) < 2 || containsSpace(input));
+	
+	SlangWord result = searchTrieNode(root, input);
+	if(result.word != NULL)
+	{
+		printf("Slang word: %s\nDescription: %s\nPress enter to continue...", result.word, result.description);
+		getchar();
+		return;
+	}
+	else
+	{
+		printf("There is no slang word \"%s\" in the dictionary.\nPress enter to continue...", input);
+		getchar();
+		return;
+	}
+}
+
+void viewSlang()
+{
+	if(root == NULL)
+	{
+		printf("There is no slang word yet in the dictionary.\nPress enter to continue...\n");
+		getchar();
+		return;
+	}
+	
+	printf("List of all slang words in the dictionary:\n");
 	printTrieNode(root);
-	sleep(1.5);
+	printf("Press enter to continue...");
+	getchar();
 }
 
 
