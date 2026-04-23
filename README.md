@@ -10,9 +10,9 @@ Boogle is a company that create, and document new slang words based on the inter
 5.	Exit\n
 
 •	If user choose menu 1 (“Release a new slang word”), then the program will:\n
-o	Ask the user to input the new slang word. Validate that the slang word must be more than 1 character and contains no space.
-o	Ask the user to input the description (meaning) of the new word. Validate that the description must be more than 1 word.
-o	Store the new released slang word to a Trie data structure along with its description.
+o	Ask the user to input the new slang word. Validate that the slang word must be more than 1 character and contains no space.\n
+o	Ask the user to input the description (meaning) of the new word. Validate that the description must be more than 1 word.\n
+o	Store the new released slang word to a Trie data structure along with its description.\n
 
 
 
@@ -20,89 +20,89 @@ o	Store the new released slang word to a Trie data structure along with its desc
 
 
 
-Input a new slang word [Must be more than 1 characters and contains no space]: d
-Input a new slang word [Must be more than 1 characters and contains no space]: d a
-Input a new slang word [Must be more than 1 characters and contains no space]: da
-Input a new slang word description [Must be more than 2 words]: The
-Input a new slang word description [Must be more than 2 words]: The word the
+Input a new slang word [Must be more than 1 characters and contains no space]: d\n
+Input a new slang word [Must be more than 1 characters and contains no space]: d a\n
+Input a new slang word [Must be more than 1 characters and contains no space]: da\n
+Input a new slang word description [Must be more than 2 words]: The\n
+Input a new slang word description [Must be more than 2 words]: The word the\n
 
-Successfully released new slang word.
-Press enter to continue...
+Successfully released new slang word.\n
+Press enter to continue...\n
 
 
-o	If the slang word already exists in the Trie, then update the description with the new description.
+o	If the slang word already exists in the Trie, then update the description with the new description.\n
 
-Input a new slang word [Must be more than 1 characters and contains no space]: da
-Input a new slang word description [Must be more than 2 words]: Same meaning as word “the”
+Input a new slang word [Must be more than 1 characters and contains no space]: da\n
+Input a new slang word description [Must be more than 2 words]: Same meaning as word “the”\n
 
-Successfully updated a slang word.
-Press enter to continue...
+Successfully updated a slang word.\n
+Press enter to continue...\n
 
 
 •	If user choose menu 2 (“Search a slang word”), then the program will:\n
-o	Ask the user to input the slang word that want to be searched. Validate that the slang word must be more than 1 character and contains no space.
-o	Search the input word in the Trie data structure.
-o	If there is no such word, please show empty message for the user and go back to main menu.
+o	Ask the user to input the slang word that want to be searched. Validate that the slang word must be more than 1 character and contains no space.\n
+o	Search the input word in the Trie data structure.\n
+o	If there is no such word, please show empty message for the user and go back to main menu.\n
 
-Input a slang word to be searched [Must be more than 1 characters and contains no space]: de
+Input a slang word to be searched [Must be more than 1 characters and contains no space]: de\n
 
-There is no word “de” in the dictionary.
-Press enter to continue...
+There is no word “de” in the dictionary.\n
+Press enter to continue...\n
 
 
 o	If there is such word, please show the word along with its description.\n
 
-Input a slang word to be searched [Must be more than 1 characters and contains no space]: d
-Input a slang word to be searched [Must be more than 1 characters and contains no space]: d a
-Input a slang word to be searched [Must be more than 1 characters and contains no space]: da
+Input a slang word to be searched [Must be more than 1 characters and contains no space]: d\n
+Input a slang word to be searched [Must be more than 1 characters and contains no space]: d a\n
+Input a slang word to be searched [Must be more than 1 characters and contains no space]: da\n
 
-Slang word  : da
-Description : Same meaning as word “the”
+Slang word  : da\n
+Description : Same meaning as word “the”\n
 
-Press enter to continue...
-
-
-•	If user choose menu 3 (“View all slang words starting with a certain prefix word”), then the program will:
-o	Ask the user to input the prefix word that want to be searched. 
-o	Search the input word in the Trie data structure.
-o	If there is no such word, please show empty message for the user.
-
-Input a prefix to be searched: de
-
-There is no prefix “de” in the dictionary.
-Press enter to continue...
+Press enter to continue...\n
 
 
-o	If there is such word, please show the list of words in the dictionary that starts with the prefix word in lexicographical order.
+•	If user choose menu 3 (“View all slang words starting with a certain prefix word”), then the program will:\n
+o	Ask the user to input the prefix word that want to be searched. \n
+o	Search the input word in the Trie data structure.\n
+o	If there is no such word, please show empty message for the user.\n
+
+Input a prefix to be searched: de\n
+
+There is no prefix “de” in the dictionary.\n
+Press enter to continue...\n
 
 
+o	If there is such word, please show the list of words in the dictionary that starts with the prefix word in lexicographical order.\n
 
 
 
 
 
-Input a prefix to be searched: da
 
-Words starts with “da”:
+
+Input a prefix to be searched: da\n
+
+Words starts with “da”:\n
 1. da
 2. dadan 
 3. daijobu
 4. dawg
 5. dazz
 
-Press enter to continue...
+Press enter to continue...\n
 
 
-•	If user choose menu 4 (“View all slang words”), then the program will:
-o	If there is no word yet in the dictionary, please show empty message for the user.
+•	If user choose menu 4 (“View all slang words”), then the program will:\n
+o	If there is no word yet in the dictionary, please show empty message for the user.\n
 
-There is no slang word yet in the dictionary.
-Press enter to continue...
+There is no slang word yet in the dictionary.\n
+Press enter to continue...\n
 
 
-o	Else, please show the list of all words in the dictionary in lexicographical order.
+o	Else, please show the list of all words in the dictionary in lexicographical order.\n
 
-List of all slang words in the dictionary:
+List of all slang words in the dictionary:\n
 1. da
 2. dadan 
 3. daijobu
@@ -111,11 +111,11 @@ List of all slang words in the dictionary:
 6. rizz
 7. simp
 
-Press enter to continue...
+Press enter to continue...\n
 
 
 •	If user choose menu 5 (“Exit”), then the program will be closed.
-
+\n
 Thank you... Have a nice day :)
 
 
