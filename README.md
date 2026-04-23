@@ -1,18 +1,15 @@
 # AOL_DS
 
-Soal
-Case
-Boogle
-Boogle is a company that create, and document new slang words based on the internet. You as a programmer working at the Boogle company are asked to create an application that is useful for seeing what slang words have been released by Boogle. Ensure that you didn’t use regex in your work, or it will affect your score. Please focus on the main logic and main feature! (Design are not scored). The requirements are: 
+Boogle is a company that create, and document new slang words based on the internet. You as a programmer working at the Boogle company are asked to create an application that is useful for seeing what slang words have been released by Boogle. Ensure that you didn’t use regex in your work, or it will affect your score. Please focus on the main logic and main feature! (Design are not scored). The requirements are:\n
 
-•	The application consists of 5 menus:
+•	The application consists of 5 menus:\n
 1.	Release a new slang word 
 2.	Search a slang word 
 3.	View all slang words starting with a certain prefix word 
 4.	View all slang words
-5.	Exit
+5.	Exit\n
 
-•	If user choose menu 1 (“Release a new slang word”), then the program will:
+•	If user choose menu 1 (“Release a new slang word”), then the program will:\n
 o	Ask the user to input the new slang word. Validate that the slang word must be more than 1 character and contains no space.
 o	Ask the user to input the description (meaning) of the new word. Validate that the description must be more than 1 word.
 o	Store the new released slang word to a Trie data structure along with its description.
@@ -42,7 +39,7 @@ Successfully updated a slang word.
 Press enter to continue...
 
 
-•	If user choose menu 2 (“Search a slang word”), then the program will:
+•	If user choose menu 2 (“Search a slang word”), then the program will:\n
 o	Ask the user to input the slang word that want to be searched. Validate that the slang word must be more than 1 character and contains no space.
 o	Search the input word in the Trie data structure.
 o	If there is no such word, please show empty message for the user and go back to main menu.
@@ -53,7 +50,7 @@ There is no word “de” in the dictionary.
 Press enter to continue...
 
 
-o	If there is such word, please show the word along with its description.
+o	If there is such word, please show the word along with its description.\n
 
 Input a slang word to be searched [Must be more than 1 characters and contains no space]: d
 Input a slang word to be searched [Must be more than 1 characters and contains no space]: d a
