@@ -41,8 +41,8 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *number)
 {
 	unsigned char newPrefix[length+2]; //1 for new char, 1 for null terminator
-	memcpy(newPrefix, prefix, length);
-	newPrefix[length + 1] = '\0';
+	strncpy((char*)newPrefix, (char*)prefix, length);
+	newPrefix[length] = '\0';
 	
 	if(node->terminal)
 	{
@@ -55,7 +55,7 @@ void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *n
 		if(node->children[i] != NULL)
 		{
 			newPrefix[length] = i;
-			printTrieNode_rec(node->children[i],newPrefix, length+1, number);
+			printTrieNode_rec(node->children[i], newPrefix, length+1, number);
 		}
 	}
 }
@@ -70,6 +70,21 @@ void printTrieNode(TrieNode *root) //wrapper function
 	}
 	int number = 1;
 	printTrieNode_rec(root, NULL, 0, &number);
+}
+
+TrieNode* findPrefixNode(TrieNode *root, unsigned char *prefix)
+{
+	TrieNode *temp = root;
+	int length = strlen((char*)prefix);
+	
+	for(int i = 0; i < length; i++)
+	{
+		if(temp == NULL) return NULL;
+		
+		temp = temp->children[prefix[i]];
+	}
+	
+	return temp;
 }
 
 void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *number)
@@ -94,21 +109,6 @@ void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *num
 	}
 }
 
-TrieNode* findPrefixNode(TrieNode *root, unsigned char *prefix)
-{
-	TrieNode *temp = root;
-	int length = strlen((char*)prefix);
-	
-	for(int i = 0; i < length; i++)
-	{
-		if(temp == NULL) return NULL;
-		
-		temp = temp->children[prefix[i]];
-	}
-	
-	return temp;
-}
-
 void printPrefix(TrieNode *root, char *signedPrefix)
 {
 	unsigned char *prefix = (unsigned char*)signedPrefix;
@@ -130,8 +130,8 @@ void printPrefix(TrieNode *root, char *signedPrefix)
 
 SlangWord searchTrieNode(TrieNode *root, char *signedText)
 {
-	if(root == NULL) return (SlangWord){NULL, NULL};
 	SlangWord result = {NULL, NULL};
+	if(root == NULL) return result;
 	unsigned char *text = (unsigned char*) signedText;
 	int length = strlen(signedText);
 	TrieNode *temp = root;

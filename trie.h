@@ -18,12 +18,12 @@ TrieNode *createTrieNode();
 bool insertTrieNode(TrieNode **root, char *signedText, char *desc);
 void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length);
 void printTrieNode(TrieNode *root);  //wrapper function
+TrieNode *findPrefixNode(TrieNode *root, unsigned char *prefix);
 void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *number);
-TrieNode* findPrefixNode(TrieNode *root, unsigned char *prefix);
 void printPrefix(TrieNode *root, char *signedPrefix); //wrapper function
 SlangWord searchTrieNode(TrieNode *root, char *signedText);
 bool node_has_children(TrieNode *node);
-TrieNode* deleteStr_rec(TrieNode *node, unsigned char *text, bool *deleted);
+TrieNode *deleteStr_rec(TrieNode *node, unsigned char *text, bool *deleted);
 bool deleteStr(TrieNode **root, char *signedText);
 
 
