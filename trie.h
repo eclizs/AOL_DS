@@ -23,8 +23,5 @@ void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *num
 void printPrefix(TrieNode *root, char *signedPrefix); //wrapper function
 SlangWord searchTrieNode(TrieNode *root, char *signedText);
 bool node_has_children(TrieNode *node);
-TrieNode *deleteStr_rec(TrieNode *node, unsigned char *text, bool *deleted);
-bool deleteStr(TrieNode **root, char *signedText);
-
 
 #endif

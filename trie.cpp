@@ -164,47 +164,6 @@ bool node_has_children(TrieNode *node)
 	return false;
 }
 
-TrieNode* deleteStr_rec(TrieNode *node, unsigned char *text, bool *deleted)
-{
-	if(node == NULL) return node;
-	
-	if(*text == '\0')
-	{
-		if(node->terminal == true)
-		{
-			node->terminal = false;
-			*deleted = true;
-			
-			if(!node_has_children(node))
-			{
-				free(node);
-				node = NULL;
-			}
-		}
-		return node;
-	}
-	node->children[text[0]] = 
-		deleteStr_rec(node->children[text[0]], text+1, deleted); //text+1 is pointer arithmetic->moving the pointer to the second character
-	
-	if(*deleted && !node->terminal && !node_has_children(node))
-	{
-		free(node);
-		node = NULL;
-	}
-	return node;
-}
-
-bool deleteStr(TrieNode **root, char *signedText)
-{
-	unsigned char *text = (unsigned char*)signedText;
-	bool result = false;
-	
-	if(*root == NULL) return false;
-	
-	*root = deleteStr_rec(*root, text, &result);
-	return result;
-}
-
 // int main()
 // {
 // 	TrieNode *root = NULL;

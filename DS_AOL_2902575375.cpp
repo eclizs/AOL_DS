@@ -4,17 +4,15 @@
 
 #ifdef _WIN32
 	#include<windows.h>
-	#define SLEEP(x) Sleep(x * 1000)
+	#define SLEEP(x) Sleep((x) * 1000)
 	#define CLEAR_SCREEN() system("cls")
 #else
 	#include<unistd.h>
-	#define SLEEP(x) usleep(x * 1000000)
+	#define SLEEP(x) usleep((x) * 1000000)
 	#define CLEAR_SCREEN() system("clear")
 #endif
 
 #include "trie.h"
-
-//TODO--idk tbh
 
 void printMenu();
 void releaseWord();
@@ -27,6 +25,8 @@ void printASCII();
 
 TrieNode *root = NULL;
 
+void (*functions[4])() = {releaseWord, searchWord, viewSlangWithPrefix, viewSlang};
+
 int main()
 {
 	printMenu();
@@ -38,6 +38,7 @@ void printMenu()
 {
 	int input;
 	do{
+		input = 0; //reset input to prevent infinite loop when user enters non-integer value
 		CLEAR_SCREEN();
 		printf("1.	Release a new slang word\n"); 
 		printf("2.	Search a slang word\n");
@@ -46,39 +47,21 @@ void printMenu()
 		printf("5.	Exit\n");
 		printf("Enter Menu (1-5): ");
 		
-		while(scanf("%d", &input) != 1)
+		if(scanf("%d", &input) != 1)
 		{
 			CLEAR_SCREEN();
 			printf("Input must be an Integer!\n");
 			SLEEP(0.5);
-			break;
 		}
 		getchar(); //consume the newline character left by scanf
 		
-		switch(input)
-		{
-			case 1:
-				releaseWord();
-				break;
-			case 2:
-				searchWord();
-				break;
-			case 3:
-				viewSlangWithPrefix();
-				break;
-			case 4:
-				viewSlang();
-				break;
-			case 5:
-				printf("Thank you... Have a nice day :)\nAlso, enjoy this ASCII art!\n");
-				printASCII();
-				SLEEP(3);
-				return;
-			default:
-				break;
-		}
-		input = 0; //reset input to prevent infinite loop when user enters non-integer value
+		if(input < 5) functions[input - 1]();
 	} while(input != 5);
+
+	CLEAR_SCREEN();
+	printASCII();
+	SLEEP(3);
+	return;
 }
 
 int containsSpace(char *str) {
