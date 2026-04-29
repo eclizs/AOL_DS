@@ -49,13 +49,16 @@ void printMenu()
 		
 		if(scanf("%d", &input) != 1)
 		{
+			// Flush everything up to and including the next newline
+			while(getchar() != '\n');
+
 			CLEAR_SCREEN();
 			printf("Input must be an Integer!\n");
 			SLEEP(0.5);
 		}
-		getchar(); //consume the newline character left by scanf
+		else getchar(); // consume the newline left by a successful scanf
 		
-		if(input < 5) functions[input - 1]();
+		if(input > 0 && input < 5) functions[input - 1]();
 	} while(input != 5);
 
 	CLEAR_SCREEN();
