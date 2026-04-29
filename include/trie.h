@@ -1,6 +1,8 @@
 #ifndef TRIE_H
 #define TRIE_H
 
+#include<stdbool.h>
+
 #define NUM_CHAR 256
 
 typedef struct TrieNode{
@@ -16,7 +18,7 @@ typedef struct SlangWord{
 
 TrieNode *createTrieNode();
 bool insertTrieNode(TrieNode **root, char *signedText, char *desc);
-void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length);
+void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *number);
 void printTrieNode(TrieNode *root);  //wrapper function
 TrieNode *findPrefixNode(TrieNode *root, unsigned char *prefix);
 void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *number);
