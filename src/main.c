@@ -273,6 +273,7 @@ void printASCII()
         "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
         "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
 	};
+	
 
 	int n = sizeof(art) / sizeof(art[0]);
 	for(int i = 0; i < n; i++)	{
