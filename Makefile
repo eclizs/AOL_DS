@@ -1,13 +1,16 @@
-CC = g++
+CC = gcc
 CFLAGS = -Wall -g
-TARGET = DS_AOL_2902575375.exe
+OBJS = main.o trie.o
+BIN = main
+TARGET = main
 
-all: $(TARGET)
+all: $(BIN)
 
-$(TARGET): DS_AOL_2902575375.cpp trie.cpp trie.h
-	$(CC) $(CFLAGS) -o $(TARGET) DS_AOL_2902575375.cpp trie.cpp
+main: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o main
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	del $(TARGET)
-
-.PHONY: all clean
+	rm -r main *.o
