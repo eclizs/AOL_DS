@@ -38,16 +38,17 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 	return temp->terminal;
 }
 
-void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *number)
+void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length)
 {
+	static int number = 1;
 	unsigned char newPrefix[length+2]; //1 for new char, 1 for null terminator
 	strncpy((char*)newPrefix, (char*)prefix, length);
 	newPrefix[length] = '\0';
 	
 	if(node->terminal)
 	{
-		printf("%d. %s\n", *number, newPrefix);
-		*number += 1;
+		printf("%d. %s\n", number, newPrefix);
+		number += 1;
 	}
 	
 	for(int i = 0; i < NUM_CHAR; i++)
@@ -55,7 +56,7 @@ void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *n
 		if(node->children[i] != NULL)
 		{
 			newPrefix[length] = i;
-			printTrieNode_rec(node->children[i], newPrefix, length+1, number);
+			printTrieNode_rec(node->children[i], newPrefix, length+1);
 		}
 	}
 }
@@ -68,8 +69,7 @@ void printTrieNode(TrieNode *root) //wrapper function
 		getchar();
 		return;
 	}
-	int number = 1;
-	printTrieNode_rec(root, NULL, 0, &number);
+	printTrieNode_rec(root, NULL, 0);
 }
 
 TrieNode* findPrefixNode(TrieNode *root, unsigned char *prefix)
@@ -87,14 +87,15 @@ TrieNode* findPrefixNode(TrieNode *root, unsigned char *prefix)
 	return temp;
 }
 
-void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *number)
+void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length)
 {
+	static int number = 1;
 	if(node == NULL) return;
 	
 	if(node->terminal)
 	{
-		printf("%d. %s\n", *number, buffer);
-		*number += 1;
+		printf("%d. %s\n", number, buffer);
+		number += 1;
 	}
 	
 	for(int i = 0; i < NUM_CHAR; i++)
@@ -104,7 +105,7 @@ void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *num
 			buffer[length] = i;
 			buffer[length+1] = '\0';
 			
-			printPrefix_rec(node->children[i], buffer, length+1, number);
+			printPrefix_rec(node->children[i], buffer, length+1);
 		}
 	}
 }
@@ -113,7 +114,6 @@ void printPrefix(TrieNode *root, char *signedPrefix)
 {
 	unsigned char *prefix = (unsigned char*)signedPrefix;
 	TrieNode *prefixNode = findPrefixNode(root, prefix);
-	int number = 1;
 	
 	if(prefixNode == NULL)
 	{
@@ -125,7 +125,7 @@ void printPrefix(TrieNode *root, char *signedPrefix)
 	unsigned char buffer[1000];
 	strcpy((char*)buffer,(char*)prefix);
 	
-	printPrefix_rec(prefixNode, buffer, strlen((char*)prefix), &number);
+	printPrefix_rec(prefixNode, buffer, strlen((char*)prefix));
 }
 
 SlangWord searchTrieNode(TrieNode *root, char *signedText)
