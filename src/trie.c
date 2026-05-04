@@ -28,7 +28,11 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 		temp = temp->children[text[i]];
 	}
 	
-	if(temp->terminal == true) return false;
+	if(temp->terminal == true)
+	{
+		temp->description = strdup(desc);
+		return false;
+	}
 	else
 	{
 		temp->terminal = true;

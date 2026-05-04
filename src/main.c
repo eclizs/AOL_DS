@@ -115,7 +115,9 @@ void releaseWord()
 		desc[strlen(desc) - 1] = '\0'; //remove newline character from the end of the string
 	} while(countWords(desc) <= 2);
 
-	if(searchTrieNode(root, input).word != NULL)
+	SlangWord slang = searchTrieNode(root, input);
+
+	if(slang.word != NULL)
 	{
 		printf("Slang word \"%s\"'s description has been updated!\nPress enter to continue...\n", input);
 		getchar();
