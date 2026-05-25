@@ -153,8 +153,4 @@ Thank you... Have a nice day :)
 
 ## Data Structure
 
-<<<<<<< HEAD
 All slang words must be stored in a **Trie** data structure. This enables efficient prefix-based search and lexicographical ordering of results.
-=======
-All slang words must be stored in a **Trie** data structure. This enables efficient prefix-based search and lexicographical ordering of results.
->>>>>>> 6dc738c (finishing touches and ascii art)
