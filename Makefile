@@ -1,4 +1,4 @@
-CC      = gcc
+CC      = g++
 CFLAGS  = -Wall -Wextra -g -Iinclude
 
 SRC_DIR = src
@@ -6,8 +6,8 @@ OBJ_DIR = obj
 BIN_DIR = bin
 
 # Collect all production .c files, excluding the standalone test binary
-SRCS = $(filter-out $(SRC_DIR)/test.c,$(wildcard $(SRC_DIR)/*.c))
-OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+SRCS = $(filter-out $(SRC_DIR)/test.cpp,$(wildcard $(SRC_DIR)/*.cpp))
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
 
 TARGET = $(BIN_DIR)/main
@@ -30,7 +30,7 @@ $(TEST_TARGET): $(TEST_OBJS) | $(BIN_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # ── Compile ───────────────────────────────────────────────────────
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
 # ── Auto-create output dirs ───────────────────────────────────────
