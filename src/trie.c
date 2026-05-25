@@ -13,6 +13,7 @@ TrieNode *createTrieNode()
 
 bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 {
+	if(strlen(signedText) == 0 || strlen(desc) == 0) return false;
 	if(*root == NULL) *root = createTrieNode();
 	
 	unsigned char *text = (unsigned char*)signedText;
@@ -155,39 +156,3 @@ SlangWord searchTrieNode(TrieNode *root, char *signedText)
 	
 	return result;
 }
-
-bool node_has_children(TrieNode *node)
-{
-	if(node == NULL) return false;
-	
-	for(int i = 0; i < NUM_CHAR; i++)
-	{
-		if(node->children[i] != NULL) return true;
-	}
-	
-	return false;
-}
-
-// int main()
-// {
-// 	TrieNode *root = NULL;
-	
-// 	// insertTrieNode(&root, "KIT", "dwasdw");
-// 	// insertTrieNode(&root, "KIND", "dwasdw");
-// 	// insertTrieNode(&root, "KIN", "dwasdw");
-// 	// insertTrieNode(&root, "KANKER", "dwasdw");
-// 	// insertTrieNode(&root, "KLANKER", "dwasdw");
-// 	// insertTrieNode(&root, "KORN", "dwasdw");
-// 	// printTrieNode(root);
-	
-// 	// printf("search for JASON: %d\n", searchTrieNode(root, "JASON"));
-// 	// printf("search for JACKSON: %d\n", searchTrieNode(root, "JACKSON"));
-// 	// printf("search for JACSON: %d\n", searchTrieNode(root, "JACSON"));
-	
-// 	// deleteStr(&root, "KIN");
-// 	// deleteStr(&root, "CA");
-	
-// 	// printPrefix(root, "K");
-
-// 	return 0;
-// }

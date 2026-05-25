@@ -5,18 +5,28 @@ SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 
-# Collect all .c files, map to obj/
-SRCS = $(wildcard $(SRC_DIR)/*.c)
+# Collect all production .c files, excluding the standalone test binary
+SRCS = $(filter-out $(SRC_DIR)/test.c,$(wildcard $(SRC_DIR)/*.c))
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
 
 TARGET = $(BIN_DIR)/main
+TEST_TARGET = $(BIN_DIR)/test
+TEST_OBJS = $(OBJ_DIR)/test.o $(OBJ_DIR)/util.o $(OBJ_DIR)/trie.o
 
 # ── Default target ────────────────────────────────────────────────
 all: $(TARGET)
+	./$(TARGET)
+
+# ── Test target ────────────────────────────────────────────────────
+test: $(TEST_TARGET)
+	./$(TEST_TARGET)
 
 # ── Link ──────────────────────────────────────────────────────────
 $(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(TEST_TARGET): $(TEST_OBJS) | $(BIN_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # ── Compile ───────────────────────────────────────────────────────
@@ -31,6 +41,6 @@ $(BIN_DIR) $(OBJ_DIR):
 -include $(DEPS)
 
 # ── Clean ─────────────────────────────────────────────────────────
-.PHONY: all clean
+.PHONY: all clean test
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
