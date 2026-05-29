@@ -1,8 +1,6 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#include "trie.h"
-
 #ifdef _WIN32
 	#include <windows.h>
 	#define SLEEP(x) Sleep((x) * 1000)

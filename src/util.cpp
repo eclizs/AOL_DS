@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "util.h"
+#include "trie.h"
 
 static TrieNode *root = NULL;
 
