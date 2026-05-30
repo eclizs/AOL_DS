@@ -15,6 +15,12 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 {
 	if(strlen(signedText) == 0 || strlen(desc) == 0) return false;
 	if(*root == NULL) *root = createTrieNode();
+
+	if(*root == NULL)
+	{
+		printf("Memory allocation failed!\n");
+		return false;
+	}
 	
 	unsigned char *text = (unsigned char*)signedText;
 	
