@@ -1,11 +1,10 @@
-CC      = g++
+CC      = gcc
 CFLAGS  = -Wall -Wextra -g -Iinclude
 
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 
-# Collect all production .c files, excluding the standalone test binary
 SRCS = $(filter-out $(SRC_DIR)/test.cpp,$(wildcard $(SRC_DIR)/*.cpp))
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)

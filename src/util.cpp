@@ -36,8 +36,6 @@ void printASCII(void)
     while(fgets(art, 1000, fp) != NULL)
         printf("%s", art);
 
-    printf("Read Lord of The Mysteries if you haven't already!\n");
-
     free(art);
     fclose(fp);
 }
