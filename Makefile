@@ -36,7 +36,7 @@ $(BIN_DIR) $(OBJ_DIR):
 all: $(TARGET)
 	./$(TARGET)
 
-# ── Test target ────────────────────────────────────────────────────
+# ── Test target ───────────────────────────────────────────────────
 test: $(TEST_TARGET)
 	./$(TEST_TARGET)
 
