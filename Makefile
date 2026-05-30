@@ -13,14 +13,6 @@ TARGET = $(BIN_DIR)/main
 TEST_TARGET = $(BIN_DIR)/test
 TEST_OBJS = $(OBJ_DIR)/test.o $(OBJ_DIR)/util.o $(OBJ_DIR)/trie.o
 
-# ── Default target ────────────────────────────────────────────────
-all: $(TARGET)
-	./$(TARGET)
-
-# ── Test target ────────────────────────────────────────────────────
-test: $(TEST_TARGET)
-	./$(TEST_TARGET)
-
 # ── Link ──────────────────────────────────────────────────────────
 $(TARGET): $(OBJS) | $(BIN_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
@@ -39,7 +31,20 @@ $(BIN_DIR) $(OBJ_DIR):
 # ── Dependency includes ───────────────────────────────────────────
 -include $(DEPS)
 
-# ── Clean ─────────────────────────────────────────────────────────
 .PHONY: all clean test
+# ── Default target ────────────────────────────────────────────────
+all: $(TARGET)
+	./$(TARGET)
+
+# ── Test target ────────────────────────────────────────────────────
+test: $(TEST_TARGET)
+	./$(TEST_TARGET)
+
+# ── Clean ─────────────────────────────────────────────────────────
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -f main.exe
+
+# ── Cross-Compile for Windows (MinGW) ─────────────────────────────
+windows:
+	bash minGW.txt
