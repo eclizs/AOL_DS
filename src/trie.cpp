@@ -43,7 +43,7 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 	return temp->terminal;
 }
 
-void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *number)
+static void printTrieNode_rec(TrieNode *node, unsigned char *prefix, int length, int *number)
 {
 	unsigned char newPrefix[length+2]; //1 for new char, 1 for null terminator
 	strncpy((char*)newPrefix, (char*)prefix, length);
@@ -92,7 +92,7 @@ TrieNode* findPrefixNode(TrieNode *root, unsigned char *prefix)
 	return temp;
 }
 
-void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *number)
+static void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, int *number)
 {
 	if(node == NULL) return;
 	
