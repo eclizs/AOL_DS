@@ -34,10 +34,7 @@ void printASCII(void)
     }
 
     while(fgets(art, 1000, fp) != NULL)
-    {
         printf("%s", art);
-        SLEEP(1e-12);
-    }
 
     printf("Read Lord of The Mysteries if you haven't already!\n");
 
@@ -180,6 +177,8 @@ void searchWord(void)
     {
         printf("Slang word: %s\nDescription: %s\nPress enter to continue...", result.word, result.description);
         getchar();
+        free(result.word);
+        free(result.description);
         return;
     }
     else
