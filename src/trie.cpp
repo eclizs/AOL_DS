@@ -18,7 +18,8 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 
 	if(*root == NULL)
 	{
-		printf("Memory allocation failed!\n");
+		printf("Memory allocation failed! Press enter to continue...\n");
+		getchar();
 		return false;
 	}
 	

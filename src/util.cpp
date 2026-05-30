@@ -143,9 +143,7 @@ void releaseWord(void)
         desc[strlen(desc) - 1] = '\0';
     } while(countWords(desc) <= 2);
 
-    SlangWord slang = searchTrieNode(root, input);
-
-    if(slang.word != NULL)
+    if(!insertTrieNode(&root, input, desc))
     {
         printf("Slang word %s's description has been updated!\nPress enter to continue...\n", input);
         getchar();
@@ -155,8 +153,6 @@ void releaseWord(void)
         printf("Slang word \"%s\" has been added to the dictionary!\nPress enter to continue...\n", input);
         getchar();
     }
-
-    insertTrieNode(&root, input, desc);
 }
 
 void searchWord(void)
