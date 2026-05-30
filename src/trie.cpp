@@ -37,6 +37,7 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 	
 	if(temp->terminal == true)
 	{
+		free(temp->description);
 		temp->description = strdup(desc);
 		return false;
 	}
