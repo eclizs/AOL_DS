@@ -164,3 +164,18 @@ SlangWord searchTrieNode(TrieNode *root, char *signedText)
 	
 	return result;
 }
+
+void destroyTrieNode(TrieNode **root)
+{
+	if(*root == NULL) return;
+
+	for(int i = 0; i < NUM_CHAR; i++)
+	{
+		if((*root)->children[i] != NULL)
+			destroyTrieNode(&(*root)->children[i]);
+	}
+
+	free((*root)->description);
+	free(*root);
+	*root = NULL;
+}

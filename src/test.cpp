@@ -25,7 +25,7 @@ int main()
     // =============================================
 
     // createTrieNode()
-    TrieNode* root;
+    TrieNode* root = NULL;
     assert((root = createTrieNode()) != NULL);
     
     // insertTrieNode()
@@ -64,6 +64,12 @@ int main()
     assert(temp.word != NULL && temp.description != NULL);
     temp = searchTrieNode(root, "invalid");
     assert(temp.word == NULL && temp.description == NULL);
+
+    // destroyTrieNode()
+    printf("destroying trie... should print \"There is no slang word yet in the dictionary.\"\n");
+    destroyTrieNode(&root);
+
+    printTrieNode(root);
 
     printf("all tests passed\n");
 }

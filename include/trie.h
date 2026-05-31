@@ -22,5 +22,6 @@ void printTrieNode(TrieNode *root);
 TrieNode *findPrefixNode(TrieNode *root, unsigned char *prefix);
 void printPrefix(TrieNode *root, char *signedPrefix);
 SlangWord searchTrieNode(TrieNode *root, char *signedText);
+void destroyTrieNode(TrieNode **root);
 
 #endif

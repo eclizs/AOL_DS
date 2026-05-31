@@ -75,6 +75,7 @@ void printMenu(void)
     } while(input != 5);
 
     CLEAR_SCREEN();
+    destroyTrieNode(&root);
     printASCII();
     SLEEP(3);
 }
