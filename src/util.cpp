@@ -77,7 +77,7 @@ void printMenu(void)
     CLEAR_SCREEN();
     destroyTrieNode(&root);
     printASCII();
-    SLEEP(3);
+    SLEEP(1.5);
 }
 
 int containsSpace(char *str)

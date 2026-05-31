@@ -31,7 +31,7 @@ $(BIN_DIR) $(OBJ_DIR):
 # ── Dependency includes ───────────────────────────────────────────
 -include $(DEPS)
 
-.PHONY: all clean test
+.PHONY: all test clean windows
 # ── Default target ────────────────────────────────────────────────
 all: $(TARGET)
 	./$(TARGET)
