@@ -1,5 +1,0 @@
-mkdir obj
-x86_64-w64-mingw32-gcc -Wall -Wextra -g -Iinclude -MMD -MP -c src/main.cpp -o obj/mainGW.o
-x86_64-w64-mingw32-gcc -Wall -Wextra -g -Iinclude -MMD -MP -c src/trie.cpp -o obj/trieGW.o
-x86_64-w64-mingw32-gcc -Wall -Wextra -g -Iinclude -MMD -MP -c src/util.cpp -o obj/utilGW.o
-x86_64-w64-mingw32-gcc -Wall -Wextra -g -Iinclude obj/mainGW.o obj/trieGW.o obj/utilGW.o -o ./main.exe
