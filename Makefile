@@ -54,7 +54,7 @@ $(BIN_DIR) $(OBJ_DIR):
 # ── Dependency includes ───────────────────────────────────────────
 -include $(DEPS)
 
-.PHONY: clean
+.PHONY: clean test
 
 # ── Clean ─────────────────────────────────────────────────────────
 clean:

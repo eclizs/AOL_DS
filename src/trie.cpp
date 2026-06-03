@@ -85,10 +85,11 @@ void printTrieNode(TrieNode *root) //wrapper function
 	printTrieNode_rec(root, NULL, 0, &number);
 }
 
-TrieNode* findPrefixNode(TrieNode *root, unsigned char *prefix)
+TrieNode* findPrefixNode(TrieNode *root, char *signedPrefix)
 {
 	TrieNode *temp = root;
-	int length = strlen((char*)prefix);
+	int length = strlen(signedPrefix);
+	unsigned char *prefix = (unsigned char*)signedPrefix;
 	
 	for(int i = 0; i < length; i++)
 	{
@@ -124,8 +125,8 @@ static void printPrefix_rec(TrieNode *node, unsigned char *buffer, int length, i
 
 void printPrefix(TrieNode *root, char *signedPrefix)
 {
+	TrieNode *prefixNode = findPrefixNode(root, signedPrefix);
 	unsigned char *prefix = (unsigned char*)signedPrefix;
-	TrieNode *prefixNode = findPrefixNode(root, prefix);
 	
 	if(prefixNode == NULL)
 	{
