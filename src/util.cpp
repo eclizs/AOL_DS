@@ -7,13 +7,6 @@
 
 static TrieNode *root = NULL;
 
-int containsSpace(char *str);
-int countWords(char *str);
-void releaseWord(void);
-void searchWord(void);
-void viewSlangWithPrefix(void);
-void viewSlang(void);
-
 static void (*functions[4])(void) = {releaseWord, searchWord, viewSlangWithPrefix, viewSlang};
 
 void printASCII(void)
@@ -59,9 +52,8 @@ void printMenu(void)
         {
             while(getchar() != '\n');
 
-            CLEAR_SCREEN();
-            printf("Input must be an Integer!\n");
-            SLEEP(0.5);
+            printf("Input must be an Integer!\npress enter to continue...");
+            getchar();
         }
         else
         {
@@ -80,11 +72,16 @@ void printMenu(void)
     SLEEP(1.5);
 }
 
-int containsSpace(char *str)
+int countSpace(char *str)
 {
     int amountOfSpaces = 0;
 
-    for(int i = 0; str[i] != '\0'; i++)
+    int i = 0;
+    int length = strlen(str);
+    while(str[i] == ' ') i++;
+    while(str[length - 1] == ' ') length--;
+
+    for(i; str[i] != '\0' && i < length; i++)
     {
         if(str[i] == ' ')
         {
@@ -101,21 +98,8 @@ int containsSpace(char *str)
 
 int countWords(char *str)
 {
-    int count = 0;
-    int len = strlen(str);
-    char lastC;
-
-    if(len > 0) lastC = str[0];
-    else return 0;
-
-    for(int i = 0; i <= len; i++)
-    {
-        if((str[i] == ' ' || str[i] == '\0') && lastC != ' ') count++;
-
-        lastC = str[i];
-    }
-
-    return count;
+    if(strlen(str) == 0) return 0;
+    return countSpace(str) + 1;
 }
 
 void releaseWord(void)
@@ -128,7 +112,7 @@ void releaseWord(void)
         printf("Input a new slang word [Must be more than 1 characters and contains no space]: ");
         scanf(" %[^\n]", input);
         getchar();
-    } while(strlen(input) < 2 || containsSpace(input));
+    } while(strlen(input) < 2 || countSpace(input) > 0);
 
     char desc[1000];
 
@@ -168,7 +152,7 @@ void searchWord(void)
         printf("Input a slang word to search [Must be more than 1 characters and contains no space]: ");
         scanf(" %[^\n]", input);
         getchar();
-    } while(strlen(input) < 2 || containsSpace(input));
+    } while(strlen(input) < 2 || countSpace(input) > 0);
 
     SlangWord result = searchTrieNode(root, input);
 
@@ -206,7 +190,7 @@ void viewSlangWithPrefix(void)
         scanf(" %[^\n]", input);
         getchar();
 
-        if(containsSpace(input))
+        if(countSpace(input) > 0)
         {
             printf("Prefix must not contain space!\n");
             SLEEP(0.5);
@@ -217,7 +201,7 @@ void viewSlangWithPrefix(void)
             printf("Prefix must be more than 0 characters!\n");
             SLEEP(0.5);
         }
-    } while(containsSpace(input) || strlen(input) == 0);
+    } while(countSpace(input) > 0 || strlen(input) == 0);
 
     if(findPrefixNode(root, input))
     {

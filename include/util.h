@@ -13,7 +13,7 @@
 
 void printASCII(void);
 void printMenu(void);
-int containsSpace(char *str);
+int countSpace(char *str);
 int countWords(char *str);
 void releaseWord(void);
 void searchWord(void);

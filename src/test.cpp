@@ -10,15 +10,17 @@ int main()
     //          TESTS FOR HELPER FUNCTIONS 
     // =============================================
     
-    // containsSpace()
-    assert(containsSpace("") == 0);
-    assert(containsSpace("ab") == 0);
-    assert(containsSpace("a b c d") == 3);
+    // countSpace()
+    assert(countSpace("") == 0);
+    assert(countSpace("ab") == 0);
+    assert(countSpace("a b c d") == 3);
+    assert(countSpace("   a   b   c   d   ") == 3);
 
     // countWords()
     assert(countWords("") == 0);
     assert(countWords("ab") == 1);
     assert(countWords("a b c d") == 4);
+    assert(countWords("   a   b   c   d   ") == 4);
 
     // =============================================
     //        TESTS FOR TRIE DATA STRUCTURE
