@@ -81,7 +81,7 @@ int countSpace(char *str)
     while(str[i] == ' ') i++;
     while(str[length - 1] == ' ') length--;
 
-    for(i; str[i] != '\0' && i < length; i++)
+    for(; str[i] != '\0' && i < length; i++)
     {
         if(str[i] == ' ')
         {
