@@ -219,7 +219,7 @@ void viewSlangWithPrefix(void)
         }
     } while(containsSpace(input) || strlen(input) == 0);
 
-    if(findPrefixNode(root, (unsigned char*)input))
+    if(findPrefixNode(root, input))
     {
         printf("Slang words starting with \"%s\":\n", input);
         printf("\n");

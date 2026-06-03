@@ -19,7 +19,7 @@ typedef struct SlangWord{
 TrieNode *createTrieNode();
 bool insertTrieNode(TrieNode **root, char *signedText, char *desc);
 void printTrieNode(TrieNode *root);
-TrieNode *findPrefixNode(TrieNode *root, unsigned char *prefix);
+TrieNode *findPrefixNode(TrieNode *root, char *prefix);
 void printPrefix(TrieNode *root, char *signedPrefix);
 SlangWord searchTrieNode(TrieNode *root, char *signedText);
 void destroyTrieNode(TrieNode **root);

@@ -50,9 +50,9 @@ int main()
 
     // findPrefixNode()
 
-    assert(findPrefixNode(root, (unsigned char*)"K") != NULL);
-    assert(findPrefixNode(root, (unsigned char*)"a") != NULL);
-    assert(findPrefixNode(root, (unsigned char*)"v") == NULL);
+    assert(findPrefixNode(root, "K") != NULL);
+    assert(findPrefixNode(root, "a") != NULL);
+    assert(findPrefixNode(root, "v") == NULL);
 
     // searchTrieNode()
     SlangWord temp = searchTrieNode(root, "KIT");

@@ -136,10 +136,11 @@ void printPrefix(TrieNode *root, char *signedPrefix)
 	}
 	
 	unsigned char buffer[1000];
-	strcpy((char*)buffer,(char*)prefix);
+	memcpy(buffer, prefix, strlen(signedPrefix));
+	buffer[strlen(signedPrefix)] = '\0';
 	
 	int number = 1;
-	printPrefix_rec(prefixNode, buffer, strlen((char*)prefix), &number);
+	printPrefix_rec(prefixNode, buffer, strlen(signedPrefix), &number);
 }
 
 SlangWord searchTrieNode(TrieNode *root, char *signedText)
