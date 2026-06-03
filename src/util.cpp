@@ -48,11 +48,11 @@ void printMenu(void)
     {
         input = 0;
         CLEAR_SCREEN();
-        printf("1.\tRelease a new slang word\n");
-        printf("2.\tSearch a slang word\n");
-        printf("3.\tView all slang words starting with a certain prefix word\n");
-        printf("4.\tView all slang words\n");
-        printf("5.\tExit\n");
+        printf("1. Release a new slang word\n");
+        printf("2. Search a slang word\n");
+        printf("3. View all slang words starting with a certain prefix word\n");
+        printf("4. View all slang words\n");
+        printf("5. Exit\n");
         printf("Enter Menu (1-5): ");
 
         if(scanf("%d", &input) != 1)
