@@ -19,7 +19,7 @@ GW_TARGET = $(BIN_DIR)/main.exe
 
 # ── Default target ────────────────────────────────────────────────
 all: $(TARGET)
-# 	./$(TARGET)
+	./$(TARGET)
 
 # ── Test target ───────────────────────────────────────────────────
 test: $(TEST_TARGET)

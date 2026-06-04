@@ -86,10 +86,7 @@ int countSpace(char *str)
         if(str[i] == ' ')
         {
             amountOfSpaces++;
-            while(str[i] == ' ')
-            {
-                i++;
-            }
+            while(str[i] == ' ') i++;
         }
     }
 
@@ -189,21 +186,9 @@ void viewSlangWithPrefix(void)
         printf("Input a prefix to be searched: ");
         scanf(" %[^\n]", input);
         getchar();
+    } while(countWords(input) > 1 || strlen(input) == 0);
 
-        if(countSpace(input) > 0)
-        {
-            printf("Prefix must not contain space!\n");
-            SLEEP(0.5);
-        }
-
-        if(strlen(input) == 0)
-        {
-            printf("Prefix must be more than 0 characters!\n");
-            SLEEP(0.5);
-        }
-    } while(countSpace(input) > 0 || strlen(input) == 0);
-
-    if(findPrefixNode(root, input))
+    if(findPrefixNode(root, input) != NULL)
     {
         printf("Slang words starting with \"%s\":\n", input);
         printf("\n");
