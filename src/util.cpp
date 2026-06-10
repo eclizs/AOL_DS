@@ -116,8 +116,8 @@ void releaseWord(void)
     do
     {
         printf("Input a new slang word description [Must be more than 2 words]:  ");
-        fgets(desc, sizeof(desc), stdin);
-        desc[strlen(desc) - 1] = '\0';
+        scanf(" %[^\n]", desc);
+        getchar();
     } while(countWords(desc) <= 2);
 
     if(!insertTrieNode(&root, input, desc))
