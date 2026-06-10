@@ -74,7 +74,12 @@ static void printTrieNode_rec(TrieNode *node, unsigned char *buffer, int length,
 
 void printTrieNode(TrieNode *root) //wrapper function
 {
-	if(root == NULL) return;
+	if(root == NULL)
+	{
+		printf("There is no slang word in the dictionary.\nPress enter to continue...");
+		getchar();
+		return;
+	}
 	
 	unsigned char buffer[1000] = {'\0'};
 

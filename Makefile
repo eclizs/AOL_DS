@@ -15,6 +15,8 @@ GW_OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%GW.o, $(SRCS))
 TARGET = $(BIN_DIR)/main
 TEST_TARGET = $(BIN_DIR)/test
 TEST_OBJS = $(OBJ_DIR)/test.o $(OBJ_DIR)/util.o $(OBJ_DIR)/trie.o
+TESTWIN_TARGET = $(BIN_DIR)/test.exe
+TESTWIN_OBJS = $(OBJ_DIR)/testGW.o $(OBJ_DIR)/utilGW.o $(OBJ_DIR)/trieGW.o
 GW_TARGET = $(BIN_DIR)/main.exe
 
 # ── Default target ────────────────────────────────────────────────
@@ -24,6 +26,9 @@ all: $(TARGET)
 # ── Test target ───────────────────────────────────────────────────
 test: $(TEST_TARGET)
 	./$(TEST_TARGET)
+
+# ── Test for Windows (MinGW) ──────────────────────────────────────
+testwin: $(TESTWIN_TARGET)
 
 # ── Cross-Compile for Windows (MinGW) ─────────────────────────────
 
@@ -36,6 +41,9 @@ $(TARGET): $(OBJS) | $(BIN_DIR)
 
 $(TEST_TARGET): $(TEST_OBJS) | $(BIN_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
+
+$(TESTWIN_TARGET): $(TESTWIN_OBJS) | $(BIN_DIR)
+	$(GW_CC) $(CFLAGS) $^ -o $@
 
 $(GW_TARGET): $(GW_OBJS) | $(BIN_DIR)
 	$(GW_CC) $(CFLAGS) $^ -o $@
