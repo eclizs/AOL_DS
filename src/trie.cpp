@@ -118,7 +118,9 @@ void printPrefix(TrieNode *root, char *signedPrefix)
 SlangWord searchTrieNode(TrieNode *root, char *signedText)
 {
 	SlangWord result = {NULL, NULL};
+	
 	if(root == NULL) return result;
+
 	unsigned char *text = (unsigned char*) signedText;
 	int length = strlen(signedText);
 	TrieNode *temp = root;
