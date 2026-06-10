@@ -7,6 +7,13 @@
 TrieNode *createTrieNode()
 {
 	TrieNode *newNode = (TrieNode*)calloc(1,sizeof(TrieNode));
+
+	if(newNode == NULL)
+	{
+		printf("Memory allocation failed! Program will be terminated. Press enter to continue...\n");
+		getchar();
+		exit(EXIT_FAILURE);
+	}
 	
 	return newNode;
 }
@@ -15,13 +22,6 @@ bool insertTrieNode(TrieNode **root, char *signedText, char *desc)
 {
 	if(strlen(signedText) == 0 || strlen(desc) == 0) return false;
 	if(*root == NULL) *root = createTrieNode();
-
-	if(*root == NULL)
-	{
-		printf("Memory allocation failed! Press enter to continue...\n");
-		getchar();
-		return false;
-	}
 	
 	unsigned char *text = (unsigned char*)signedText;
 	
